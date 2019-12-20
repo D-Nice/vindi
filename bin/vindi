@@ -1,6 +1,7 @@
 #!/bin/sh
 xhost local:root > /dev/null
 docker run \
+  --rm \
   -e DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /tmp/vindi:/tmp/vindi \
