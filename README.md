@@ -64,6 +64,8 @@ install to complete.
 One way is to use CocInstall sync, but then the extensions need to be
 explicitly declared in the
 Dockerfile instead of the init.vim
+OR read/ping stdout from nvim, and if no output after x time, consider it done?
+or wait for expected last message to show up and continue
 - [ ] Look into minifying the docker image (try node:lts-slim ??)
 - [x] Add NERDTREE tab patch to re-use exisitng tab window instead of opening a new one
 - [ ] Turn this into a table

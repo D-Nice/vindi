@@ -7,14 +7,17 @@ COPY ./etc/init /root
 
 # Setup vim container
 RUN set -ex \
-  && apt update \
-  && apt install \
+  && apt-get update \
+  && apt-get install \
           --no-upgrade \
           -y curl \
              neovim \
              git \
              xclip \
-  || (echo "FAILED" && exit 1) \
+             gcc \
+  && rm -rf /var/lib/apt/lists/* 
+
+RUN set -ex \
   && curl -sL install-node.now.sh/lts | bash -s -- -y \
   && curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
@@ -22,12 +25,16 @@ RUN set -ex \
   && nvim --headless \
             +PlugInstall \
             +qa \
-  && nvim --headless +CocUpdateSync \
+  && nvim --headless +CocUpdate \
   # TODO find more elegant way over 2 minute sleep
-  & sleep 120 \
-  && rm -rf /var/lib/apt/lists/* 
+  & sleep 120
 
+ENV PATH="/root/.nimble/bin:${PATH}"
+RUN set -ex \
+  && curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y \
+  && nimble install nimlsp -y
 # post-install patch
+
 COPY ./etc/patch /root
 
 WORKDIR /opt/vindi
