@@ -81,3 +81,4 @@ from floating windows - fixed for pywal
 - [ ] Update docs with latest changes
 - [ ] Upload built image to Docker, ideally CI this process via GH actions
 - [ ] Have install script check if vindi bin already exists, and ask for update instead?
+- [ ] Minify in CI with docker-slim
