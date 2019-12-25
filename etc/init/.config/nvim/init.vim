@@ -6,7 +6,9 @@ Plug 'vim-airline/vim-airline'    " powerline status theme
 Plug 'dylanaraps/wal.vim'         " pywal color integration
 
 " LSP/coc
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 027b14d3fa201be1b560fac2c3d357adce190715
 
 " Nim
 Plug 'vim-syntastic/syntastic', { 'for': 'nim' }
@@ -189,10 +191,10 @@ nmap ]g :lnext<CR>
 " Auto loclist toggler
 " re-uses existign syntastic vars to avoid var duplication
 function! s:AutoToggleLocList()
-  let loclength = len(getloclist(winnr()))
   let lastwinnr = winnr()
-  if loclength
+  if len(getloclist(winnr()))
     if g:syntastic_auto_loc_list == 5
+      let loclength = len(getloclist(winnr()))
       if loclength > g:syntastic_loc_list_height
         let loclength = g:syntastic_loc_list_height
       endif
@@ -206,13 +208,11 @@ function! s:AutoToggleLocList()
   endif
 endfunction
 
+" Universal auto location list popup
 " Cursor considered held depending on updatetime
-"autocmd CursorHold *.nim call s:AutoToggleLocList()
-"autocmd User CocLocationsChange call s:AutoToggleLocList()
+autocmd CursorHold * call s:AutoToggleLocList()
 autocmd QuitPre * if empty(&bt) | lclose | endif
-autocmd! User CocDiagnosticChange
-autocmd  User CocDiagnosticChange
-\  call CocActionAsync('quickfixes', function('CocUpdateQuickFixes'))
+let g:coc_enable_locationlist = 0
 
 "set nocompatible
 "call plug#begin('~/.vim/plugged')
@@ -413,3 +413,4 @@ map <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
     \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
     \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
     \ . ">"<CR>
+
