@@ -1,0 +1,15 @@
+name: linter-dockerfile
+on: 
+  - push
+  - pull_request
+jobs:
+  lint:
+    name: lint-dockerfile
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: lint
+      run: docker run --rm -i 
+        -v "$PWD"/.hadolint.yaml:/opt/.config/hadolint.yaml
+        -e XDG_CONFIG_HOME=/opt/.config
+        hadolint/hadolint < Dockerfile

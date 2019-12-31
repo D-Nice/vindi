@@ -5,5 +5,12 @@
   "diagnostic.warningSign":         "WW",
   "diagnostic.enable":              true,
   "diagnostic.signOffset":          9999999,
-  "diagnostic.highlightOffset":     9999999
+  "diagnostic.highlightOffset":     9999999,
+  "coc.preferences.extensionUpdateCheck": "never",
+  "languageserver": {
+    "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
+    }
+  }
 }
