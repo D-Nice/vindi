@@ -1,23 +1,8 @@
 # vindi - vim IDE in docker
 
-## Why
-
-Allows for minimal or no vim at all on host system, whilst
-having a fully-fledged IDE capable vim, with its config
-and setup isolated into a docker container.
-
-Also can give familiar vim experience on servers with docker,
-by simply pulling the image, you're good to go with a fully
-setup and pre-configured neovim.
-
-Additionally, you can play with the config and settings,
-and don't have to worry about messing up or resetting a config.
-Unhappy with some plugin you've added, restart the container.
-If you want it to be persistent, just add it to the init.vim
-config file and rebuild.
-
 <!-- vim-markdown-toc GFM -->
 
+* [Why](#why)
 * [Requirements for best experience](#requirements-for-best-experience)
 * [Install](#install)
 * [Run](#run)
@@ -36,14 +21,30 @@ config file and rebuild.
 
 <!-- vim-markdown-toc -->
 
-### Requirements for best experience
+## Why
+
+Allows for minimal or no vim at all on host system, whilst
+having a fully-fledged IDE capable vim, with its config
+and setup isolated into a docker container.
+
+Also can give familiar vim experience on servers with docker,
+by simply pulling the image, you're good to go with a fully
+setup and pre-configured neovim.
+
+Additionally, you can play with the config and settings,
+and don't have to worry about messing up or resetting a config.
+Unhappy with some plugin you've added, restart the container.
+If you want it to be persistent, just add it to the init.vim
+config file and rebuild.
+
+## Requirements for best experience
 
 * Docker (with root ns remapped)
 * Powerline patched font (for airline theme)
 * Pywal (for dynamic color theme based on bg image)
 * Terminal with unicode support
 
-### Install
+## Install
 
 Simply run the shell install script. It will require sudo if you wish to
 install the binary to `/usr/local/bin`. You may choose to place it
@@ -51,7 +52,7 @@ manually somewhere in your PATH as well, in which case deny the prompt.
 
 `$ ./install.sh`
 
-### Run
+## Run
 
 Run vindi just as you would run vim.
 
@@ -65,7 +66,7 @@ Do note, it will only have access to the
 current dir and subdirs, so make sure you run it from at least your
 project root for best results. Avoid absolute paths!
 
-#### Security
+### Security
 
 The shell script to launch vindi runs xhost, and maps your X
 server to the container, for host<->container clipboard access.
@@ -78,7 +79,7 @@ on any single user systems, and remapping to a user that can read
 and edit your code but no important or system files...
 <https://docs.docker.com/engine/security/userns-remap/>
 
-#### Keybindings
+### Keybindings
 
 Give a Woman a Fish, and You Feed Her for a Day.
 Teach a Woman To Fish, and You Feed Her for a Lifetime.
@@ -92,19 +93,19 @@ that I often find myself using.
 
 `<space>` is remapped to `<leader>`
 
-##### gitgutter
+#### gitgutter
 
 `<leader>hp`
 
 Shows git difference of hunk in preview.
 
-##### easymotion
+#### easymotion
 
 `<leader><leader>s`
 
 Move cursor to specific character in active visible buffer.
 
-##### NERDTree
+#### NERDTree
 
 `<F8>`
 
@@ -118,25 +119,25 @@ Opens new tab.
 
 Switch between open tabs.
 
-##### tmux-navigator
+#### tmux-navigator
 
 `<ctrl>h/j/k/l`
 
 Nav between split buffers or tmux'd sessions.
 
-##### repeat
+#### repeat
 
 `.`
 
 Repeats last native OR plugin action.
 
-##### surround
+#### surround
 
 `ysiw"`
 
 Surrounds current cursor'd inner word with double quotes.
 
-##### coc/LSP
+#### coc/LSP
 
 Availability of these depends on LSP in question for filetype.
 
@@ -157,7 +158,7 @@ Cycle through suggestions.
 
 Auto-complete suggestion or snippet.
 
-#### Customization
+### Customization
 
 Edit config files to your liking in `etc/`.
 `etc/init/.config/nvim/init.vim` holds the default config and plugins.
@@ -171,12 +172,12 @@ When it comes to snippet plugins, you can even use VS Code plugins,
 with `https://github.com/xabikos/vscode-javascript` in the current config being
 an example.
 
-### BUGS
+## BUGS
 
 * [ ] switching between NERDTree tabs causes diagnostics to disappear until
 reswitch or save. Appears specific to markdown.
 
-### TODO
+## TODO
 
 * [x] Change workdir to vindi
 * [x] Add bashrc alias guidance (did better, just made install script with
