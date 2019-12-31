@@ -6,7 +6,13 @@ Plug 'vim-airline/vim-airline'    " powerline status theme
 Plug 'dylanaraps/wal.vim'         " pywal color integration
 
 " LSP/coc
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 027b14d3fa201be1b560fac2c3d357adce190715
+
+" Nim
+Plug 'vim-syntastic/syntastic', { 'for': 'nim' }
+Plug 'zah/nim.vim',             { 'for': 'nim' }
 
 " Git
 Plug 'airblade/vim-gitgutter'     " track git changes
@@ -31,7 +37,6 @@ call plug#end()
 " Define Coc Extensions Here
 let g:coc_global_extensions = ['coc-tsserver',
                               \'coc-json',
-                              \'coc-html',
                               \'coc-css' ,
                               \'coc-python',
                               \'coc-yaml',
@@ -44,7 +49,6 @@ let g:coc_global_extensions = ['coc-tsserver',
                               \'coc-tabnine',
                               \'coc-gitignore',
                               \'coc-pairs',
-                              \'coc-import-cost',
                               \'coc-sh',
                               \'coc-terminal',
                               \'coc-docker',
@@ -63,6 +67,8 @@ set nopaste
 set number
 set mouse=a
 set encoding=UTF-8
+" decreased hold time from 4 secs to 0.5. If laggy, increase value
+set updatetime=1000
 syntax on
 
 colorscheme wal
@@ -128,8 +134,13 @@ endfunction
 " Pywal compatibility colors
 " With highly contrasting red for errors always
 hi PMenu ctermbg=Black ctermfg=14
-hi CocErrorSign ctermfg=160
-hi link CocErrorLine CocErrorSign
+hi CocErrorSign ctermfg=160 cterm=bold
+hi CocErrorVirtualText ctermfg=160
+hi link CocErrorFloat CocErrorVirtualText
+hi link CocErrorLine CocErrorVirtualText
+hi CocWarningSign ctermfg=Brown cterm=bold
+hi CocWarningVirtualText ctermfg=Brown
+hi link CocWarningFloat CocWarningVirtualText
 
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
@@ -150,14 +161,53 @@ inoremap <silent><expr> <c-space>
   \ coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
-
 let g:airline#extensions#coc#enabled = 1
 
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
-nmap [a <Plug>(coc-diagnostic-prev)
-nmap ]a <Plug>(coc-diagnostic-next)
+
+nmap [g <Plug>(coc-diagnostic-prev)
+nmap ]g <Plug>(coc-diagnostic-next)
 nmap [e <Plug>(coc-diagnostic-prev-error)
 nmap ]e <Plug>(coc-diagnostic-next-error)
+
+" WIP
+" Nim or Syntastic depndent config
+let g:syntastic_error_symbol = "EE"
+let g:syntastic_warning_symbol = "WW"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 5
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 3
+
+nmap [g :lprev<CR>
+nmap ]g :lnext<CR>
+
+" Auto loclist toggler
+" re-uses existign syntastic vars to avoid var duplication
+function! s:AutoToggleLocList()
+  let lastwinnr = winnr()
+  if len(getloclist(winnr()))
+    if g:syntastic_auto_loc_list == 5
+      let loclength = len(getloclist(winnr()))
+      if loclength > g:syntastic_loc_list_height
+        let loclength = g:syntastic_loc_list_height
+      endif
+      exe 'lopen '.loclength
+      if lastwinnr != winnr() | exe lastwinnr.' wincmd w' | endif
+    endif
+  else
+    if g:syntastic_auto_loc_list > 0
+      lclose
+    endif
+  endif
+endfunction
+
+" Universal auto location list popup
+" Cursor considered held depending on updatetime
+autocmd CursorHold * call s:AutoToggleLocList()
+autocmd QuitPre * if empty(&bt) | lclose | endif
+let g:coc_enable_locationlist = 0
