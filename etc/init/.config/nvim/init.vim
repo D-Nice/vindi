@@ -6,8 +6,8 @@ Plug 'vim-airline/vim-airline'    " powerline status theme
 Plug 'dylanaraps/wal.vim'         " pywal color integration
 
 " LSP/coc
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Last used working release
 " 027b14d3fa201be1b560fac2c3d357adce190715
 
 " Nim
@@ -30,6 +30,7 @@ Plug 'christoomey/vim-tmux-navigator' " enable C+hjkl nav between split buffers
 Plug 'easymotion/vim-easymotion'      " improved motions
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' } " :GenTocGFM to gen TOC
 
 " Initialize plugin system
 call plug#end()
@@ -168,8 +169,6 @@ nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 
-nmap [g <Plug>(coc-diagnostic-prev)
-nmap ]g <Plug>(coc-diagnostic-next)
 nmap [e <Plug>(coc-diagnostic-prev-error)
 nmap ]e <Plug>(coc-diagnostic-next-error)
 
