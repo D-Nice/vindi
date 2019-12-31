@@ -3,7 +3,7 @@ on:
   - push
   - pull_request
 jobs:
-  commitsar:
+  lint:
     name: lint-dockerfile
     runs-on: ubuntu-latest
     steps:
