@@ -1,12 +1,9 @@
 name: builder-dockerfile
 on: 
-  push:
-    branches:
-      - master
-        develop
   pull_request:
     branches:
       - master
+        develop
 jobs:
   build-test:
     runs-on: ubuntu-latest
