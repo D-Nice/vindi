@@ -11,7 +11,13 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: dnice/vindi
-          username: ${{ secrets.DOCKER_USERNAME }}
+          username: dnice
           password: ${{ secrets.DOCKER_PASSWORD }}
-          snapshot: true
           tag_names: true
+      - name: Publish to dockerhub with latest tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: dnice/vindi
+          username: dnice
+          password: ${{ secrets.DOCKER_PASSWORD }}
