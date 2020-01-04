@@ -14,8 +14,8 @@ then
   exit 2
 fi
 
-echo -n "Install vindi to /usr/local/bin/ using sudo install? (Y/n) "
-read answer
+printf "Install vindi to /usr/local/bin/ using sudo install? (Y/n) "
+read -r answer
 
 if [ "$answer" = "${answer#[Yy]}" ]
 then
