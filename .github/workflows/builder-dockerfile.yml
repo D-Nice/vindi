@@ -1,0 +1,16 @@
+name: builder-dockerfile
+on: 
+  push:
+    branches:
+      - master
+        develop
+  pull_request:
+    branches:
+      - master
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: build
+      run: docker build -t vindi .
