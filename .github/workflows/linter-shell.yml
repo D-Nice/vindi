@@ -1,10 +1,7 @@
 name: linter-shell
 on: 
-  push:
-  pull_request:
-    branches:
-      - master
-        develop
+  - push
+  - pull_request
 jobs:
   lint:
     runs-on: ubuntu-latest
