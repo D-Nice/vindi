@@ -1,4 +1,4 @@
-name: Dockerhub publisher
+name: publisher-dockerhub
 on:
   create:
     tags: 
