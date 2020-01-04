@@ -1,7 +1,8 @@
 name: Dockerhub publisher
 on:
-  release:
-    types: [published]
+  create:
+    tags: 
+      - '**'
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -14,7 +15,7 @@ jobs:
           username: dnice
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_names: true
-      - name: Publish to dockerhub with latest tag
+      - name: Publish to dockerhub as latest
         if: startsWith(github.ref, 'refs/tags/v')
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
