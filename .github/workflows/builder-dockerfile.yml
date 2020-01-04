@@ -1,5 +1,4 @@
 name: builder-dockerfile
-# trigger on PR from these branches
 on:
   pull_request:
     branches:
