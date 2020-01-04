@@ -10,8 +10,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Last used working release
 " 027b14d3fa201be1b560fac2c3d357adce190715
 
+" Fallback Linting/Syntax
+Plug 'vim-syntastic/syntastic', { 'for': ['nim', 'sh'] }
+
 " Nim
-Plug 'vim-syntastic/syntastic', { 'for': 'nim' }
 Plug 'zah/nim.vim',             { 'for': 'nim' }
 
 " Git

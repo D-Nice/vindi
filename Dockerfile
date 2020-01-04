@@ -17,6 +17,7 @@ RUN set -ex \
              git \
              xclip \
              gcc \
+             shellcheck \
   && rm -rf /var/lib/apt/lists/* 
 
 RUN set -ex \

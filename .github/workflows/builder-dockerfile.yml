@@ -1,9 +1,10 @@
 name: builder-dockerfile
-on: 
+# trigger on PR from these branches
+on:
   pull_request:
     branches:
       - master
-        develop
+      - develop
 jobs:
   build-test:
     runs-on: ubuntu-latest
