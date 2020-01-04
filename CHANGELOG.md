@@ -1,4 +1,17 @@
 # CHANGELOG
+
+## [1.1.0](https://github.com/D-Nice/vindi/compare/v1.0.0...v1.1.0) (2020-01-04)
+
+
+### Features
+
+* **plug:** add shellcheck ([197409b](https://github.com/D-Nice/vindi/commit/197409b4c926163616450cd3f9c3b171e8810f25))
+
+
+### Bug Fixes
+
+* **install:** resolve lint warnings ([03948a3](https://github.com/D-Nice/vindi/commit/03948a3583b0c8d0ce03cf4d89d7e2c3aab8e192))
+
 ## 1.0.0 (2020-01-04)
 
 
