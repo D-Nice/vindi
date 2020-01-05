@@ -1,6 +1,6 @@
 #!/bin/sh
 printf "Build vindi locally? (If no local image, vindi bin will pull pre-built image) (Y/n) "
-read -r answer
+read answer
 
 if [ "$answer" != "${answer#[Yy]}" ]
 then
@@ -20,7 +20,7 @@ then
   fi
 fi
 
-printf "Install vindi to /usr/local/bin/ using sudo install? (Y/n) "
+echo -n "Install vindi to /usr/local/bin/ using sudo install? (Y/n) "
 read -r answer
 
 if [ "$answer" = "${answer#[Yy]}" ]

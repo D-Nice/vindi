@@ -2,7 +2,7 @@ FROM debian:unstable-slim
 LABEL maintainer=d-nice2@protonmail.com
 LABEL version=0.1.0
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Add initial config
 COPY ./etc/init /root

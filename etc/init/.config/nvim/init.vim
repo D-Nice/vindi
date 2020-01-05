@@ -64,6 +64,8 @@ let g:coc_global_extensions = ['coc-tsserver',
 " TODO may need something to stop space happening in normal mode etc...
 let mapleader = "\<Space>"
 
+function s:test()
+
 set clipboard^=unnamed,unnamedplus
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set nopaste
