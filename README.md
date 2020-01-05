@@ -46,7 +46,15 @@ config file and rebuild.
 
 ## Install
 
-Simply run the shell install script. It will require sudo if you wish to
+Simply run the shell install script with 2 prompts.
+
+vindi supports 2 configurations, a full local build, or remote.
+
+If you're fine with the default build, you can skip the local build
+step, and the binary will pull the latest image from the dnice/vindi
+repo on <https://hub.docker.com>.
+
+It will require sudo if you wish to
 install the binary to `/usr/local/bin`. You may choose to place it
 manually somewhere in your PATH as well, in which case deny the prompt.
 
@@ -152,6 +160,7 @@ an example.
 
 * [ ] switching between NERDTree tabs causes diagnostics to disappear until
 reswitch or save. Appears specific to markdown.
+* [ ] Syntastic error when trying to save file, while NERDTree is open.
 
 ## TODO
 
@@ -182,10 +191,11 @@ but silently (maybe multiple layers...). Used multiple layers.
 * [x] Populate some useful key list per plugin
 * [x] Note that VS Code snippets can be added as plugins
 * [x] Update docs with latest changes
-* [ ] Upload built image to Docker, ideally CI this process via GH actions
+* [x] Upload built image to Docker, ideally CI this process via GH actions
 * [ ] Have install script check if vindi bin already exists, and ask for update instead?
 * [ ] Minify in CI with docker-slim
 * [ ] Use nicer icons for nerdtree-git-plugin if possibru?
 * [ ] Look into persistence for some of the auto complete features or snippets
 * [ ] Persist command history between container and host
 * [ ] If too ugly, move out BUGS/TODO
+* [x] Make vindi usable with local build or remote image pull

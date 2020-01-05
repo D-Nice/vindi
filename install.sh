@@ -1,17 +1,23 @@
 #!/bin/sh
-echo "Starting build, please wait a few minutes..."
-if docker build -q -t vindi .
-then
-  echo "Build finished"
-else
-  echo "Build failed... aborting"
-  exit 1
-fi
+printf "Build vindi locally? (If no local image, vindi bin will pull pre-built image) (Y/n) "
+read -r answer
 
-if ! docker image inspect vindi > /dev/null
+if [ "$answer" != "${answer#[Yy]}" ]
 then
-  echo "Unexpected docker error encountered... aborting"
-  exit 2
+  echo "Starting build, please wait a few minutes..."
+  if docker build -q -t vindi .
+  then
+    echo "Build finished"
+  else
+    echo "Build failed... aborting"
+    exit 1
+  fi
+
+  if ! docker image inspect vindi > /dev/null
+  then
+    echo "Unexpected docker error encountered... aborting"
+    exit 2
+  fi
 fi
 
 printf "Install vindi to /usr/local/bin/ using sudo install? (Y/n) "

@@ -1,9 +1,18 @@
 #!/bin/sh
 xhost local:root > /dev/null
+
+# let's figure out if we have a local build or not
+if docker image inspect vindi > /dev/null 2>&1
+then
+  VINDI_IMG=vindi
+else
+  VINDI_IMG=dnice/vindi
+fi
+
 docker run \
   --rm \
   -e DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /tmp/vindi:/tmp/vindi \
   -v "$PWD":/opt/vindi \
-  -it vindi "$@"
+  -it "$VINDI_IMG" "$@"
