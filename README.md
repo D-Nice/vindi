@@ -46,6 +46,10 @@ config file and rebuild.
 
 ## Install
 
+Clone this repository.
+
+`$ git clone https://github.com/D-Nice/vindi.git`
+
 Simply run the shell install script with 2 prompts.
 
 vindi supports 2 configurations, a full local build, or remote.
