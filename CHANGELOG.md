@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.2.0](https://github.com/D-Nice/vindi/compare/v1.1.0...v1.2.0) (2020-01-07)
+
+
+### Features
+
+* add support for local or remote image run ([4868558](https://github.com/D-Nice/vindi/commit/48685586230e815de91c513607fd8c4674a02333))
+
+
+### Bug Fixes
+
+* **dockerfile:** missing && for nim step ([6310270](https://github.com/D-Nice/vindi/commit/6310270043dbb9cccce5be13a904e3de29db50b5))
+
 ## [1.1.0](https://github.com/D-Nice/vindi/compare/v1.0.0...v1.1.0) (2020-01-04)
 
 
