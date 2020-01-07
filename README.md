@@ -52,6 +52,8 @@ Clone this repository.
 
 Simply run the shell install script with 2 prompts.
 
+`$ ./install.sh`
+
 vindi supports 2 configurations, a full local build, or remote.
 
 If you're fine with the default build, you can skip the local build
@@ -61,8 +63,6 @@ repo on <https://hub.docker.com>.
 It will require sudo if you wish to
 install the binary to `/usr/local/bin`. You may choose to place it
 manually somewhere in your PATH as well, in which case deny the prompt.
-
-`$ ./install.sh`
 
 ## Run
 
