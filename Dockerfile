@@ -36,10 +36,10 @@ RUN set -ex \
 ENV PATH="/root/.nimble/bin:${PATH}"
 RUN set -ex \
   && curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y \
-  nimble install nimlsp -y \
+  && nimble install nimlsp -y \
   && rm -rf /root/.choosenim/toolchains/nim-*/c_code
-# post-install patch
 
+# post-install patch
 COPY ./etc/patch /root
 
 WORKDIR /opt/vindi
