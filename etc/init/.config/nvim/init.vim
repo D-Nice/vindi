@@ -174,6 +174,8 @@ nmap gr <Plug>(coc-references)
 nmap [e <Plug>(coc-diagnostic-prev-error)
 nmap ]e <Plug>(coc-diagnostic-next-error)
 
+nmap <leader>f <Plug>(coc-fix-current)
+
 " WIP
 " Nim or Syntastic depndent config
 let g:syntastic_error_symbol = "EE"
