@@ -107,44 +107,44 @@ that I often find myself using.
 
 #### gitgutter
 
-`<leader>hp` - Shows git difference of hunk in preview.
+* `<leader>hp` - Shows git difference of hunk in preview.
 
 #### easymotion
 
-`<leader><leader>s` - Move cursor to specific character in active visible buffer.
+* `<leader><leader>s` - Move cursor to specific character in active visible buffer.
 
 #### NERDTree
 
-`<F8>` - Toggles NERDTree nav window.
+* `<F8>` - Toggles NERDTree nav window.
 
-`<ctrl>n` - Opens new tab.
+* `<ctrl>n` - Opens new tab.
 
-`<shift>j/k` - Switch between open tabs.
+* `<shift>j/k` - Switch between open tabs.
 
 #### tmux-navigator
 
-`<ctrl>h/j/k/l` - Nav between split buffers or tmux'd sessions.
+* `<ctrl>h/j/k/l` - Nav between split buffers or tmux'd sessions.
 
 #### repeat
 
-`.` - Repeats last native OR plugin action.
+* `.` - Repeats last native OR plugin action.
 
 #### surround
 
-`ysiw"` - Surrounds current cursor'd inner word with double quotes.
+* `ysiw"` - Surrounds current cursor'd inner word with double quotes.
 
 #### coc/LSP
 
 Availability of these depends on LSP in question for filetype.
 
-`]e` - Go to next error (use `[` for prev).
+* `]e` - Go to next error (use `[` for prev).
 
-`gd` - Open cursor'd definition in new window
+* `gd` - Open cursor'd definition in new window
 (use `<ctrl>o/i` to jump back and forth or use `:jumps`)
 
-`<tab>/<shift><tab>` - Cycle through suggestions.
+* `<tab>/<shift><tab>` - Cycle through suggestions.
 
-`<ctrl><tab>` - Auto-complete suggestion or snippet.
+* `<ctrl><tab>` - Auto-complete suggestion or snippet.
 
 ### Customization
 
