@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.3.0](https://github.com/D-Nice/vindi/compare/v1.2.0...v1.3.0) (2020-01-09)
+
+
+### Features
+
+* add coc fix keybinding ([ffda0a1](https://github.com/D-Nice/vindi/commit/ffda0a1dd5ba05d0f0bef31cf3070edfd0f8f2fd))
+
 ## [1.2.0](https://github.com/D-Nice/vindi/compare/v1.1.0...v1.2.0) (2020-01-07)
 
 
