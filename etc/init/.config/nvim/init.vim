@@ -143,6 +143,8 @@ hi link CocErrorLine CocErrorVirtualText
 hi CocWarningSign ctermfg=Brown cterm=bold
 hi CocWarningVirtualText ctermfg=Brown
 hi link CocWarningFloat CocWarningVirtualText
+" Use terminal bg/transparency
+hi Normal ctermbg=None
 
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
