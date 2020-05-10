@@ -15,4 +15,5 @@ docker run \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /tmp/vindi:/tmp/vindi \
   -v "$PWD":/opt/vindi \
+  -v "$HOME"/.local/share/nvim/shada:/root/.local/share/nvim/shada \
   -it "$VINDI_IMG" "$@"
