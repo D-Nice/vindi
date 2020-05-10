@@ -15,6 +15,7 @@ jobs:
   shell:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - name: shellcheck
-        uses: azohra/shell-linter@v0.2.0
+        uses: azohra/shell-linter@v0.3.0
+        with:
+          path: "install.sh,bin/vindi"
