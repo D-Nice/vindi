@@ -191,21 +191,24 @@ nmap [g :lprev<CR>
 nmap ]g :lnext<CR>
 
 " Auto loclist toggler
-" re-uses existign syntastic vars to avoid var duplication
+" re-uses existing syntastic vars to avoid var duplication
 function! s:AutoToggleLocList()
-  let lastwinnr = winnr()
-  if len(getloclist(winnr()))
-    if g:syntastic_auto_loc_list == 5
-      let loclength = len(getloclist(winnr()))
-      if loclength > g:syntastic_loc_list_height
-        let loclength = g:syntastic_loc_list_height
+  " make sure loclist isnt active buffer
+  if getbufinfo("%")[0].variables.current_syntax != "qf"
+    let lastwinnr = winnr()
+    if len(getloclist(winnr()))
+      if g:syntastic_auto_loc_list == 5
+        let loclength = len(getloclist(winnr()))
+        if loclength > g:syntastic_loc_list_height
+          let loclength = g:syntastic_loc_list_height
+        endif
+        exe 'lopen '.loclength
+        if lastwinnr != winnr() | exe lastwinnr.' wincmd w' | endif
       endif
-      exe 'lopen '.loclength
-      if lastwinnr != winnr() | exe lastwinnr.' wincmd w' | endif
-    endif
-  else
-    if g:syntastic_auto_loc_list > 0
-      lclose
+    else
+      if g:syntastic_auto_loc_list > 0
+        lclose
+      endif
     endif
   endif
 endfunction
