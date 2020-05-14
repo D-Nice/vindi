@@ -33,6 +33,7 @@ Plug 'easymotion/vim-easymotion'      " improved motions
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' } " :GenTocGFM to gen TOC
+Plug 'elbeardmorez/vim-loclist-follow' " select loclist based on buffer cursor pos
 
 " Initialize plugin system
 call plug#end()
@@ -218,3 +219,8 @@ endfunction
 autocmd CursorHold * call s:AutoToggleLocList()
 autocmd QuitPre * if empty(&bt) | lclose | endif
 let g:coc_enable_locationlist = 0
+
+" loclist auto follow
+let g:loclist_follow = 1
+let g:loclist_follow_modes = 'n'
+let g:loclist_follow_target = 'last'
