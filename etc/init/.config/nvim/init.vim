@@ -194,8 +194,15 @@ nmap ]g :lnext<CR>
 " Auto loclist toggler
 " re-uses existing syntastic vars to avoid var duplication
 function! s:AutoToggleLocList()
+  let bufctx = getbufinfo("%")[0].variables
+  if has_key(bufctx, "current_syntax")
+    let bufctx = bufctx.current_syntax
+  else
+    let bufctx = ""
+  endif
   " make sure loclist isnt active buffer
-  if getbufinfo("%")[0].variables.current_syntax != "qf"
+  " by checking if it's quickfix syntax
+  if bufctx != "qf"
     let lastwinnr = winnr()
     if len(getloclist(winnr()))
       if g:syntastic_auto_loc_list == 5
