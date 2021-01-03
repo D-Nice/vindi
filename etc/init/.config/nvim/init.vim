@@ -70,7 +70,8 @@ let g:coc_global_extensions = ['coc-tsserver',
 let mapleader = "\<Space>"
 
 set clipboard^=unnamed,unnamedplus
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+set expandtab softtabstop=2 shiftwidth=2 smarttab
+set autoindent smartindent
 set nopaste
 set number
 set mouse=a
