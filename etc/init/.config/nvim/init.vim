@@ -237,3 +237,7 @@ let g:coc_enable_locationlist = 0
 let g:loclist_follow = 1
 let g:loclist_follow_modes = 'n'
 let g:loclist_follow_target = 'last'
+
+" auto retab & rm dangling
+autocmd BufWritePre <buffer> retab
+autocmd BufWritePre <buffer> call RemoveDanglingEndlines()
