@@ -24,6 +24,10 @@ Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeMirrorToggle'] 
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeMirrorToggle'] }
 
+" Svelte
+Plug 'evanleck/vim-svelte', { 'branch': 'main', 'for': 'svelte' }
+Plug 'mattn/emmet-vim', { 'for': ['svelte', 'html', 'css', 'md'] }
+
 " Quality of Life
 Plug 'Raimondi/delimitMate'           " auto delimiter for quotes etc
 Plug 'tpope/vim-surround'             " bindings for surrounding text
@@ -57,6 +61,7 @@ let g:coc_global_extensions = ['coc-tsserver',
                               \'coc-docker',
                               \'coc-github',
                               \'coc-snippets',
+                              \'coc-svelte',
                               \'https://github.com/xabikos/vscode-javascript',
                               \]
 
