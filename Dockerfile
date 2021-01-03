@@ -1,4 +1,4 @@
-FROM debian:unstable-slim
+FROM debian:testing-slim
 LABEL maintainer=d-nice2@protonmail.com
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]

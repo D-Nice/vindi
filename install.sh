@@ -5,7 +5,7 @@ read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
   echo "Starting build, please wait a few minutes..."
-  if docker build -q -t vindi .
+  if docker build --no-cache -q -t vindi .
   then
     echo "Build finished"
   else
