@@ -20,9 +20,9 @@ Plug 'zah/nim.vim',             { 'for': 'nim' }
 Plug 'airblade/vim-gitgutter'     " track git changes
 
 " NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeMirrorToggle'] }
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeMirrorToggle'] }
 
 " Quality of Life
 Plug 'Raimondi/delimitMate'           " auto delimiter for quotes etc
@@ -91,7 +91,7 @@ let g:NERDTreeWinSize=24
 map  <S-j> :tabn<CR>
 map  <S-k> :tabp<CR>
 map  <C-n> :tabnew<CR>
-map  <F8> :NERDTreeToggle<CR>
+map  <F8> :NERDTreeMirrorToggle<CR>
 
 " vimgutter
 if exists("*GitGutterGetHunkSummary")
