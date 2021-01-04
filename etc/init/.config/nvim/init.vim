@@ -239,5 +239,6 @@ let g:loclist_follow_modes = 'n'
 let g:loclist_follow_target = 'last'
 
 " auto retab & rm dangling
-autocmd BufWritePre <buffer> retab
-autocmd BufWritePre <buffer> call RemoveDanglingEndlines()
+let blacklist = ['', 'vim', 'txt']
+autocmd BufWritePre * ++once if index(blacklist, &ft) < 0 | retab
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | call RemoveDanglingEndlines()
