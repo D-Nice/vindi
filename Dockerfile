@@ -29,7 +29,7 @@ RUN set -ex \
             +qa \
   && nvim --headless +CocUpdate \
   # TODO find more elegant way over 2 minute sleep
-  & sleep 120 \
+  & sleep 180 \
   && rm -rf /root/.npm/_cacache
 
 ENV PATH="/root/.nimble/bin:${PATH}"
