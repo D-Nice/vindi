@@ -203,4 +203,4 @@ but silently (maybe multiple layers...). Used multiple layers.
 * [ ] Persist command history between container and host
 * [ ] If too ugly, move out BUGS/TODO
 * [x] Make vindi usable with local build or remote image pull
-* [ ] As of e7ecdb074c9015abf28f70ac874ff8445d6c1766 there were instances where a CocUpdate seems to occur, when starting vindi, a reinstall fixes this so something occurs during building (seems to have had non-zero exit, while trying to clear npm cache folder... could check what it looks like on a clean install and use it as an indicator whether to continue waiting or wut
+* [x] As of e7ecdb074c9015abf28f70ac874ff8445d6c1766 there were instances where a CocUpdate seems to occur, when starting vindi, a reinstall fixes this so something occurs during building (seems to have had non-zero exit, while trying to clear npm cache folder... could check what it looks like on a clean install and use it as an indicator whether to continue waiting or wut (tentatively considered resolved with 5 minute CocUpdate wait time)
