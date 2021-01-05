@@ -248,3 +248,7 @@ let NERDTreeMapJumpFirstChild=''   "K
 let NERDTreeMapJumpLastChild=''    "J
 let NERDTreeMapJumpPrevSibling=''  "<C-J>
 let NERDTreeMapJumpNextSibling=''  "<C-K>
+
+" avoid constant buffer resizing from lint warnings
+set signcolumn=yes:1
+set numberwidth=3
