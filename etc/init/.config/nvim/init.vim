@@ -242,3 +242,9 @@ let g:loclist_follow_target = 'last'
 let blacklist = ['', 'vim', 'txt']
 autocmd BufWritePre * ++once if index(blacklist, &ft) < 0 | retab
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | call RemoveDanglingEndlines()
+
+" disable NT keys that conflict with nav
+let NERDTreeMapJumpFirstChild=''   "K
+let NERDTreeMapJumpLastChild=''    "J
+let NERDTreeMapJumpPrevSibling=''  "<C-J>
+let NERDTreeMapJumpNextSibling=''  "<C-K>
