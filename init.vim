@@ -1,0 +1,1 @@
+etc/init/.config/nvim/init.vim
