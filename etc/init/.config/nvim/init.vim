@@ -252,3 +252,6 @@ let NERDTreeMapJumpNextSibling=''  "<C-K>
 " avoid constant buffer resizing from lint warnings
 set signcolumn=yes:1
 set numberwidth=3
+
+" minimize vim-airline and other ui update lag (consider replacing airline)
+set lazyredraw
