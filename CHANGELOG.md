@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## [1.4.0](https://github.com/D-Nice/vindi/compare/v1.3.1...v1.4.0) (2021-02-02)
+
+
+### Features
+
+* **plug:** add vim-loclist-follow ([dc564cf](https://github.com/D-Nice/vindi/commit/dc564cf5c3e69758ec062a2fb5b5f428466c5ed8))
+* add blacklist ft for auto retab ([c40192d](https://github.com/D-Nice/vindi/commit/c40192dea1f946f5dcf5f8cc2e4753d2c9cd3411))
+* add history/shada persistence ([92968e8](https://github.com/D-Nice/vindi/commit/92968e89c7ac132cc12490621aa37b685e1e90e4))
+* add svelte & emmet plugins ([7c93dd0](https://github.com/D-Nice/vindi/commit/7c93dd0e6d70ddb84b31a170501197b53c1c63ac))
+* auto retab & dangling line remover ([e7ecdb0](https://github.com/D-Nice/vindi/commit/e7ecdb074c9015abf28f70ac874ff8445d6c1766))
+* improve indenting ([8a5730f](https://github.com/D-Nice/vindi/commit/8a5730f2b8c3fcb8e7e581dca8ec89433438a22a))
+
+
+### Bug Fixes
+
+* airline/ui lag w/ lazyredraw ([4206a08](https://github.com/D-Nice/vindi/commit/4206a0807163ad77bdebd6f9d77f89aac4e06c63))
+* autocomplete & transparency ([090b3c3](https://github.com/D-Nice/vindi/commit/090b3c34bee1c1b0ce7680e63db986282ecbfda5))
+* check that buf var has key ([122d918](https://github.com/D-Nice/vindi/commit/122d918d14f2c38911109f4d4f815687988ef4c6))
+* CocUpdate issue by inc sleep time to 3 mins ([706c043](https://github.com/D-Nice/vindi/commit/706c0439a28cbc07e6d06f447380e47ec043d967))
+* cocupdate issue with 5 minute timeout ([8daa7a1](https://github.com/D-Nice/vindi/commit/8daa7a1e2ec88e9b70e407a94f6e65532815105d))
+* improve nerdtree behaviour with some persistence ([ca36959](https://github.com/D-Nice/vindi/commit/ca36959cf0277e6b17f5a687db5c6b220f0fec56))
+* lint signs visual annoyance ([1cdc882](https://github.com/D-Nice/vindi/commit/1cdc882ed1a5127ea124ac53a8755025ab87c8a7))
+* loclist position reset ([3ce9b31](https://github.com/D-Nice/vindi/commit/3ce9b314c97cc1fc26c7733167501ef398363a92))
+* mv ftplugin to correct nvim config path ([8a0d79f](https://github.com/D-Nice/vindi/commit/8a0d79f7dae650b73d48d01c2a0aeeb2904a5499))
+* rm nerdtree conflicting keys with nav ([ef00eae](https://github.com/D-Nice/vindi/commit/ef00eaec48e89e0eaf1a88e24b625f5e824abc62))
+* update to working docker image & no cache build ([461473e](https://github.com/D-Nice/vindi/commit/461473e285f336ed65e33dc036e1aaba9821ba9a))
+
 ### [1.3.1](https://github.com/D-Nice/vindi/compare/v1.3.0...v1.3.1) (2020-01-18)
 
 
