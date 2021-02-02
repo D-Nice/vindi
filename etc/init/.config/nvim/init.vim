@@ -20,9 +20,13 @@ Plug 'zah/nim.vim',             { 'for': 'nim' }
 Plug 'airblade/vim-gitgutter'     " track git changes
 
 " NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeMirrorToggle'] }
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeMirrorToggle'] }
+
+" Svelte
+Plug 'evanleck/vim-svelte', { 'branch': 'main', 'for': 'svelte' }
+Plug 'mattn/emmet-vim', { 'for': ['svelte', 'html', 'css', 'md'] }
 
 " Quality of Life
 Plug 'Raimondi/delimitMate'           " auto delimiter for quotes etc
@@ -33,6 +37,7 @@ Plug 'easymotion/vim-easymotion'      " improved motions
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' } " :GenTocGFM to gen TOC
+Plug 'elbeardmorez/vim-loclist-follow' " select loclist based on buffer cursor pos
 
 " Initialize plugin system
 call plug#end()
@@ -56,6 +61,7 @@ let g:coc_global_extensions = ['coc-tsserver',
                               \'coc-docker',
                               \'coc-github',
                               \'coc-snippets',
+                              \'coc-svelte',
                               \'https://github.com/xabikos/vscode-javascript',
                               \]
 
@@ -64,7 +70,8 @@ let g:coc_global_extensions = ['coc-tsserver',
 let mapleader = "\<Space>"
 
 set clipboard^=unnamed,unnamedplus
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+set expandtab softtabstop=2 shiftwidth=2 smarttab
+set autoindent smartindent
 set nopaste
 set number
 set mouse=a
@@ -90,7 +97,7 @@ let g:NERDTreeWinSize=24
 map  <S-j> :tabn<CR>
 map  <S-k> :tabp<CR>
 map  <C-n> :tabnew<CR>
-map  <F8> :NERDTreeToggle<CR>
+map  <F8> :NERDTreeMirrorToggle<CR>
 
 " vimgutter
 if exists("*GitGutterGetHunkSummary")
@@ -143,6 +150,8 @@ hi link CocErrorLine CocErrorVirtualText
 hi CocWarningSign ctermfg=Brown cterm=bold
 hi CocWarningVirtualText ctermfg=Brown
 hi link CocWarningFloat CocWarningVirtualText
+" Use terminal bg/transparency
+hi Normal ctermbg=None
 
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
@@ -189,21 +198,31 @@ nmap [g :lprev<CR>
 nmap ]g :lnext<CR>
 
 " Auto loclist toggler
-" re-uses existign syntastic vars to avoid var duplication
+" re-uses existing syntastic vars to avoid var duplication
 function! s:AutoToggleLocList()
-  let lastwinnr = winnr()
-  if len(getloclist(winnr()))
-    if g:syntastic_auto_loc_list == 5
-      let loclength = len(getloclist(winnr()))
-      if loclength > g:syntastic_loc_list_height
-        let loclength = g:syntastic_loc_list_height
-      endif
-      exe 'lopen '.loclength
-      if lastwinnr != winnr() | exe lastwinnr.' wincmd w' | endif
-    endif
+  let bufctx = getbufinfo("%")[0].variables
+  if has_key(bufctx, "current_syntax")
+    let bufctx = bufctx.current_syntax
   else
-    if g:syntastic_auto_loc_list > 0
-      lclose
+    let bufctx = ""
+  endif
+  " make sure loclist isnt active buffer
+  " by checking if it's quickfix syntax
+  if bufctx != "qf"
+    let lastwinnr = winnr()
+    if len(getloclist(winnr()))
+      if g:syntastic_auto_loc_list == 5
+        let loclength = len(getloclist(winnr()))
+        if loclength > g:syntastic_loc_list_height
+          let loclength = g:syntastic_loc_list_height
+        endif
+        exe 'lopen '.loclength
+        if lastwinnr != winnr() | exe lastwinnr.' wincmd w' | endif
+      endif
+    else
+      if g:syntastic_auto_loc_list > 0
+        lclose
+      endif
     endif
   endif
 endfunction
@@ -213,3 +232,26 @@ endfunction
 autocmd CursorHold * call s:AutoToggleLocList()
 autocmd QuitPre * if empty(&bt) | lclose | endif
 let g:coc_enable_locationlist = 0
+
+" loclist auto follow
+let g:loclist_follow = 1
+let g:loclist_follow_modes = 'n'
+let g:loclist_follow_target = 'last'
+
+" auto retab & rm dangling
+let blacklist = ['', 'vim', 'txt']
+autocmd BufWritePre * ++once if index(blacklist, &ft) < 0 | retab
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | call RemoveDanglingEndlines()
+
+" disable NT keys that conflict with nav
+let NERDTreeMapJumpFirstChild=''   "K
+let NERDTreeMapJumpLastChild=''    "J
+let NERDTreeMapJumpPrevSibling=''  "<C-J>
+let NERDTreeMapJumpNextSibling=''  "<C-K>
+
+" avoid constant buffer resizing from lint warnings
+set signcolumn=yes:1
+set numberwidth=3
+
+" minimize vim-airline and other ui update lag (consider replacing airline)
+set lazyredraw

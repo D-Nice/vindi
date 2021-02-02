@@ -7,6 +7,8 @@
   "diagnostic.signOffset":          9999999,
   "diagnostic.highlightOffset":     9999999,
   "coc.preferences.extensionUpdateCheck": "never",
+  "suggest.detailMaxLength": 300,
+  "suggest.minTriggerInputLength": 2,
   "languageserver": {
     "nim": {
       "command": "nimlsp",

@@ -1,4 +1,4 @@
-FROM debian:unstable-slim
+FROM debian:testing-slim
 LABEL maintainer=d-nice2@protonmail.com
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -29,7 +29,7 @@ RUN set -ex \
             +qa \
   && nvim --headless +CocUpdate \
   # TODO find more elegant way over 2 minute sleep
-  & sleep 120 \
+  & sleep 300 \
   && rm -rf /root/.npm/_cacache
 
 ENV PATH="/root/.nimble/bin:${PATH}"
